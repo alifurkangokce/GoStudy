@@ -1,6 +1,9 @@
 package routers
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"study/controllers"
+)
 
 func TableRouters(incomingRouters *gin.Engine) {
 	incomingRouters.GET("/tables", controllers.GetTables())
