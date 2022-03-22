@@ -24,10 +24,10 @@ func GetFoods() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		ctx, cancel := context.WithTimeout(context.Background(), 100*time.Second)
 		defer cancel()
-		var food models.Food
+		var food []models.Food
 		result, err := foodCollection.Find(context.TODO(), bson.D{})
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while calling GetFoods"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occurred while calling GetFoods"})
 		}
 		if err = result.All(ctx, &food); err != nil {
 			log.Fatal(err)
@@ -43,7 +43,7 @@ func GetFood() gin.HandlerFunc {
 		err := foodCollection.FindOne(ctx, bson.M{"food_id": foodId}).Decode(&food)
 		defer cancel()
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while fetching the food item"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "error occurred while fetching the food item"})
 		}
 		c.JSON(http.StatusOK, food)
 	}

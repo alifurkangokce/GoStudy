@@ -67,10 +67,10 @@ func CreateMenu() gin.HandlerFunc {
 		menu.MenuId = menu.ID.Hex()
 		result, err := menuCollection.InsertOne(ctx, menu)
 		if err != nil {
-			msg := fmt.Sprintf("Food item not found")
+			msg := fmt.Sprintf("Menu was not found")
 			c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
 		}
-		c.JSON(http.StatusOK, result)
+		c.JSON(http.StatusCreated, result)
 	}
 }
 func UpdateMenu() gin.HandlerFunc {
