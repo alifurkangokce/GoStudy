@@ -38,7 +38,7 @@ func GetInvoices() gin.HandlerFunc {
 		if err := result.All(ctx, &invoice); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Something went wrong in invoice"})
 		}
-		c.JSON(http.StatusOK, result)
+		c.JSON(http.StatusOK, invoice)
 	}
 }
 func GetInvoice() gin.HandlerFunc {

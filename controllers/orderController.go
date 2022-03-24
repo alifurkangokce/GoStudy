@@ -29,7 +29,7 @@ func GetOrders() gin.HandlerFunc {
 		if err = result.All(ctx, &order); err != nil {
 			log.Fatal(err)
 		}
-		c.JSON(http.StatusOK, result)
+		c.JSON(http.StatusOK, order)
 
 	}
 }

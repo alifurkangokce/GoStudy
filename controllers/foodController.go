@@ -32,7 +32,7 @@ func GetFoods() gin.HandlerFunc {
 		if err = result.All(ctx, &food); err != nil {
 			log.Fatal(err)
 		}
-		c.JSON(http.StatusOK, result)
+		c.JSON(http.StatusOK, food)
 	}
 }
 func GetFood() gin.HandlerFunc {
