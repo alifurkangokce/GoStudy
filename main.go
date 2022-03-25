@@ -2,14 +2,10 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"go.mongodb.org/mongo-driver/mongo"
 	"os"
-	"study/database"
 	"study/middleware"
 	"study/routers"
 )
-
-var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "food")
 
 func main() {
 	port := os.Getenv("PORT")
